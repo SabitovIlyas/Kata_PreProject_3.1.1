@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import web.model.User;
 import web.service.UserService;
 
-import java.util.List;
-
 @Controller
 public class UserController {
 
@@ -19,10 +17,9 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/")
+    @GetMapping
     public String printUsers(ModelMap model) {
-        List<User> users = userService.getUsers();
-        model.addAttribute("users", users);
+        model.addAttribute("users", userService.getUsers());
         return "index";
     }
 
